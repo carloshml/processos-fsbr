@@ -1,13 +1,21 @@
 package com.fsbr.desagio_fsbr.dto;
 
-import java.time.LocalDateTime;
+ 
+
+import com.fsbr.desagio_fsbr.entity.Processo;
 
 public record ProcessRecord(
-        String npu,
-        LocalDateTime dataCadastro,
-        LocalDateTime dataVisualização,
-        String municipio,
-        String uf,
-        byte documento) {
+                String npu,               
+                String municipio,
+                String uf,
+                byte[] documento) {
+
+        public Processo toProcesso() {
+                return new Processo(npu,                              
+                                municipio,
+                                uf,
+                                documento);
+
+        }
 
 }

@@ -12,18 +12,18 @@ import jakarta.validation.constraints.Pattern;
 public class Processo {
 
     @Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private UUID id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id; 
 
     @NotNull
     @Pattern(regexp = "\\d{7}-\\d{2}\\.\\d{4}\\.\\d\\.\\d{2}\\.\\d{4}")
     private String npu;
 
     @NotNull
-    private LocalDateTime dataCadastro;
+    private LocalDateTime dataCadastro = LocalDateTime.now();
 
     @NotNull
-    private LocalDateTime dataVisualização;
+    private LocalDateTime dataVisualização = LocalDateTime.now();
 
     @NotNull
     @NotBlank
@@ -33,10 +33,27 @@ public class Processo {
     @NotBlank
     private String uf;
 
-    @Lob  
-    private byte[]  documento;
+    @Lob
+    @NotNull
+    private byte[] documento;
 
     public Processo() {
+    }
+
+    public Processo(String npu2, String municipio2,
+            String uf2, byte[] documento2) {
+        npu = npu2;
+        municipio = municipio2;
+        uf = uf2;
+        documento = documento2;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public String getNpu() {
