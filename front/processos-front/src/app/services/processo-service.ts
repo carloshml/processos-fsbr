@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, lastValueFrom, Observable, of } from "rxjs";
-import { OBJPROCESSO } from "../components/home/home.component";
+import { OBJPROCESSO } from "../components/cadastro-processo/cadastro-processo.component";
 
 
 @Injectable()

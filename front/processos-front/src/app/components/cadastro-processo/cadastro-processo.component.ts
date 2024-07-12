@@ -34,10 +34,10 @@ export class OBJPROCESSO {
   standalone: true,
   imports: [MatFormFieldModule, CommonModule, MatInputModule, FormsModule, MatButtonModule, MatIconModule, ReactiveFormsModule, MatSelectModule, MatProgressBarModule, DialogComponent],
   providers: [LocalidadesService, ProcessoService],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  templateUrl: './cadastro-processo.component.html',
+  styleUrl: './cadastro-processo.component.scss'
 })
-export class HomeComponent {
+export class CadastroProcessoComponent {
 
 
   readonly dialog = inject(MatDialog);
