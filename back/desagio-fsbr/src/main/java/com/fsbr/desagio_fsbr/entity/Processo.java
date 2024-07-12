@@ -16,7 +16,7 @@ public class Processo {
     private UUID id;
 
     @NotNull
-    @Pattern(regexp = "\\d{7}-\\d{2}\\.\\d{4}\\.\\d\\.\\d{2}\\.\\d{4}")
+    @Pattern(regexp = "\\d{7}-\\d{2}\\.\\d{4}\\.\\d\\.\\d{2}\\.\\d{4}", message = " formato npu incorreto")
     private String npu;
 
     @NotNull

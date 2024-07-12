@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, lastValueFrom, Observable, of } from "rxjs";
+import { catchError, lastValueFrom, Observable, of, throwError } from "rxjs";
 import { OBJPROCESSO } from "../components/cadastro-processo/cadastro-processo.component";
 
 
@@ -17,7 +17,7 @@ export class ProcessoService {
             this.http
                 .post<any>(this.api, processo)
                 .pipe(
-                    catchError(this.handleErrorPesquisa<any>('salvarProcessos', {}))
+                    catchError(e => throwError(() => this.handleErrorRequisicao(e)))
                 )
         );
 
@@ -28,7 +28,7 @@ export class ProcessoService {
             this.http
                 .get<any>(this.api)
                 .pipe(
-                    catchError(this.handleErrorPesquisa<any>('listarProcessos', {}))
+                    catchError(e => throwError(() => this.handleErrorRequisicao(e)))
                 )
         );
     }
@@ -39,7 +39,7 @@ export class ProcessoService {
             this.http
                 .get<any>(`${this.api}/listarQtdProcessos`)
                 .pipe(
-                    catchError(this.handleErrorPesquisa<any>('listarQtdProcessos', {}))
+                    catchError(e => throwError(() => this.handleErrorRequisicao(e)))
                 )
         );
     }
@@ -49,14 +49,13 @@ export class ProcessoService {
             this.http
                 .get<any>(`${this.api}/listarProcessosPaginado/${inicio}/${quantidade}`)
                 .pipe(
-                    catchError(this.handleErrorPesquisa<any>('listarProcessosPaginado', {}))
+                    catchError(e => throwError(() => this.handleErrorRequisicao(e)))
                 )
         );
     }
 
-    private handleErrorPesquisa<T>(operation = 'operation', result?: T) {
-        return (error: any): Observable<T> => {
-            return of(result as T);
-        };
+    private handleErrorRequisicao(e: any) {
+        return e.error;
     }
 }
+

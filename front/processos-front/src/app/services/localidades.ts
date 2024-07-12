@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, lastValueFrom, Observable, of } from "rxjs";
+import { catchError, lastValueFrom, throwError } from "rxjs";
 
 
 @Injectable()
@@ -14,15 +14,13 @@ export class LocalidadesService {
             this.http
                 .get<any>(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/distritos`)
                 .pipe(
-                    catchError(this.handleErrorPesquisa<any>('buscarLocalidate', {}))
+                    catchError(e => throwError(() => this.handleErrorRequisicao(e)))
                 )
         );
 
     }
 
-    private handleErrorPesquisa<T>(operation = 'operation', result?: T) {
-        return (error: any): Observable<T> => {
-            return of(result as T);
-        };
+    private handleErrorRequisicao(e: any) {
+        return e.error;
     }
 }

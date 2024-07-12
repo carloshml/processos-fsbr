@@ -119,10 +119,18 @@ export class CadastroProcessoComponent {
     dialogRef.afterClosed().subscribe(async permitido => {
       if (permitido) {
 
-        const response = await this.processoService.salvarProcessos(this.objSave);
-        console.log('Salvar this.objSave', this.objSave);
-        console.log('Salvar response', response);
-
+        try {
+          const response = await this.processoService.salvarProcessos(this.objSave);
+          console.log('Salvar this.objSave', this.objSave);
+          console.log('Salvar response', response);
+          this._snackBar.open('parabéns Processo Salvo');
+          this.form.reset();
+        } catch (error: any) {
+          const errorMessages = error.invalidParams?.map((e: any) => {
+            return `Atenção ${e.name}, motivo ${e.reason}`
+          });
+          this._snackBar.open(error.title + '  ' + errorMessages.join(','));
+        }
       }
     });
   }

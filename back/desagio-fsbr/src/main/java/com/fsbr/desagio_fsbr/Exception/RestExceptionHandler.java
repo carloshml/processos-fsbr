@@ -34,7 +34,7 @@ public class RestExceptionHandler {
 				.toList();
 		var pb = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
 		pb.setTitle("Parametro não foi validado");
-		pb.setProperty("invalid-params", fieldErrors);
+		pb.setProperty("invalidParams", fieldErrors);
 		return pb;
 	}
 
