@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.mat-primary {
+    --mat-full-pseudo-checkbox-selected-icon-color: #f3f3f3;
+    --mat-full-pseudo-checkbox-selected-checkmark-color: #303030;
+    --mat-full-pseudo-checkbox-unselected-icon-color: rgba(255, 255, 255, 0.7);
+    --mat-full-pseudo-checkbox-disabled-selected-checkmark-color: #303030;
+    --mat-full-pseudo-checkbox-disabled-unselected-icon-color: #686868;
+    --mat-full-pseudo-checkbox-disabled-selected-icon-color: #686868;
+    --mat-minimal-pseudo-checkbox-selected-checkmark-color: #ccbfc4;
+    --mat-minimal-pseudo-checkbox-disabled-selected-checkmark-color: #686868;
+    --mdc-filled-text-field-label-text-color: white !important;
+    --mdc-filled-text-field-focus-label-text-color: white !important;
+    --mdc-filled-text-field-focus-active-indicator-color: white !important;
+    --mdc-filled-text-field-caret-color: white !important;
+}
+
+.btn {
+    padding: 17px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-left: 4px;
+    background: gray;
+    color: white;
+}
+
+
+
+a {
+    text-decoration: none;
+}
+
+a.btn :visited {
+    color: white;
+}

@@ -13,7 +13,7 @@ public class Processo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id; 
+    private UUID id;
 
     @NotNull
     @Pattern(regexp = "\\d{7}-\\d{2}\\.\\d{4}\\.\\d\\.\\d{2}\\.\\d{4}")
@@ -33,6 +33,10 @@ public class Processo {
     @NotBlank
     private String uf;
 
+    @NotNull
+    @NotBlank
+    private String documentoNome;
+
     @Lob
     @NotNull
     private byte[] documento;
@@ -41,10 +45,11 @@ public class Processo {
     }
 
     public Processo(String npu2, String municipio2,
-            String uf2, byte[] documento2) {
+            String uf2, String documentoNome2, byte[] documento2) {
         npu = npu2;
         municipio = municipio2;
         uf = uf2;
+        documentoNome = documentoNome2;
         documento = documento2;
     }
 
@@ -102,6 +107,14 @@ public class Processo {
 
     public void setDocumento(byte[] documento) {
         this.documento = documento;
+    }
+
+    public String getDocumentoNome() {
+        return documentoNome;
+    }
+
+    public void setDocumentoNome(String documentoNome) {
+        this.documentoNome = documentoNome;
     }
 
 }

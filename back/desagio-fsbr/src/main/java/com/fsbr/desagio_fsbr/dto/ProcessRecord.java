@@ -8,12 +8,14 @@ public record ProcessRecord(
                 String npu,               
                 String municipio,
                 String uf,
+                String documentoNome,
                 byte[] documento) {
 
         public Processo toProcesso() {
                 return new Processo(npu,                              
                                 municipio,
                                 uf,
+                                documentoNome,
                                 documento);
 
         }

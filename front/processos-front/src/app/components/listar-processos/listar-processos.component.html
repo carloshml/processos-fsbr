@@ -1,0 +1,29 @@
+<section class="painel">
+    <div class="row ">
+        <h2>Listar Processo</h2>
+        <div></div>
+        <h2>
+            <a class="btn" href="cadastrar">
+                <mat-icon>save</mat-icon>
+                cadastrar
+            </a>
+        </h2>
+    </div>
+
+    <section>
+        <div class="row titulo">
+            <div>npu</div>
+            <div>data de cadastro </div>
+            <div>UF do processo</div>
+        </div>
+        <div>
+            @for (processo of processos; track processo) {
+            <div class="row elemento">
+                <div>{{processo.npu}}</div>
+                <div>{{processo.dataCadastro | date:'dd/MM/yy HH:mm' }}</div>
+                <div>{{processo.uf}}</div>
+            </div>
+            }
+        </div>
+    </section>
+</section>

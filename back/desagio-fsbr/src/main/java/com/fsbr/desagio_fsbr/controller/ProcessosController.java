@@ -1,10 +1,14 @@
 package com.fsbr.desagio_fsbr.controller;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.fsbr.desagio_fsbr.dto.ProcessRecord;
 import com.fsbr.desagio_fsbr.entity.Processo;
@@ -28,14 +32,13 @@ public class ProcessosController {
          return ResponseEntity.ok(processo);
     }
 
-    // Get process by ID
+    
     @GetMapping("/{id}")
     public Process getProcessById(@PathVariable Long id) {
 
         return null;
-    }
-
-    // Get all processes
+    } 
+    
     @GetMapping
     public ResponseEntity<List<Processo>> getAllProcesses() {
         var processos = processoService.getAll();
