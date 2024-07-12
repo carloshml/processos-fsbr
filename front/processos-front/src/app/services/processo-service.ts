@@ -31,7 +31,27 @@ export class ProcessoService {
                     catchError(this.handleErrorPesquisa<any>('listarProcessos', {}))
                 )
         );
+    }
 
+
+    listarQtdProcessos() {
+        return lastValueFrom(
+            this.http
+                .get<any>(`${this.api}/listarQtdProcessos`)
+                .pipe(
+                    catchError(this.handleErrorPesquisa<any>('listarQtdProcessos', {}))
+                )
+        );
+    }
+
+    listarProcessosPaginado(inicio: number, quantidade: number) {
+        return lastValueFrom(
+            this.http
+                .get<any>(`${this.api}/listarProcessosPaginado/${inicio}/${quantidade}`)
+                .pipe(
+                    catchError(this.handleErrorPesquisa<any>('listarProcessosPaginado', {}))
+                )
+        );
     }
 
     private handleErrorPesquisa<T>(operation = 'operation', result?: T) {

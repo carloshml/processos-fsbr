@@ -1,7 +1,9 @@
 package com.fsbr.desagio_fsbr.service;
 
 import java.util.List;
-
+import java.util.UUID;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.fsbr.desagio_fsbr.dto.ProcessRecord;
@@ -21,8 +23,22 @@ public class ProcessoService {
         return processoRepository.save(process.toProcesso());
     }
 
-    public List<Processo>  getAll() {
+    public List<Processo> getAll() {
         return processoRepository.findAll();
+    }
+
+    public Processo getProcessById(UUID id) {
+        var processosO = processoRepository.findById(id);
+        return processosO.get();
+    }
+
+    public List<Processo> findAllPaginado(PageRequest pageRequest) {
+        Page<Processo> pagerProcessos = processoRepository.findAll(pageRequest);
+        return pagerProcessos.getContent();
+    }
+
+    public Long listarQtdProcessos() {
+        return processoRepository.listarQtdProcessos();
     }
 
 }

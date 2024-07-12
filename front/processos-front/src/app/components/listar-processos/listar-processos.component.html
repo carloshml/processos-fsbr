@@ -3,7 +3,7 @@
         <h2>Listar Processo</h2>
         <div></div>
         <h2>
-            <a class="btn" href="cadastrar">
+            <a class="btn-1" href="cadastrar">
                 <mat-icon>save</mat-icon>
                 cadastrar
             </a>
@@ -16,7 +16,7 @@
             <div>data de cadastro </div>
             <div>UF do processo</div>
         </div>
-        <div>
+        <div *ngIf="processos.length > 0">
             @for (processo of processos; track processo) {
             <div class="row elemento">
                 <div>{{processo.npu}}</div>
@@ -26,4 +26,6 @@
             }
         </div>
     </section>
+    <app-pagination *ngIf="processos.length > 0" [pager]="pager" (paginationEmmiter)="setPageofClientes($event)">
+    </app-pagination>
 </section>
