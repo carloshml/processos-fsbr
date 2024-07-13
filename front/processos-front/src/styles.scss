@@ -10,6 +10,11 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+:root {
+    --main-color: gray;
+    --light-main-color: lightgray;
+}
+
 
 .mat-primary {
     --mat-full-pseudo-checkbox-selected-icon-color: #f3f3f3;
@@ -27,16 +32,19 @@ body {
 }
 
 .btn-1 {
-    padding: 17px;
+    padding: 6px;
     border: none;
     border-radius: 6px;
     font-weight: bold;
     margin-left: 4px;
     background: gray;
     color: white;
+    display: flex;
+    align-items: center;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-around;
 }
-
-
 
 a {
     text-decoration: none;
