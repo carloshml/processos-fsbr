@@ -36,13 +36,13 @@ export class ListarProcessosComponent {
 
   async setPageofClientes(page: any) {
     this.procurando = true;
-    console.log('page', page);
+     
     if (page < 1 || page > this.pager.totalPages) {
       return;
     }
     this.pager = this.paginacaoServico.getPager(this.totalElementos, page, this.valorMaximoLinhasGrid);
     const processos = await this.processoService.listarProcessosPaginado((this.pager.currentPage - 1), this.valorMaximoLinhasGrid);
-    console.log('processos', processos);
+     
     this.processos = processos;
     this.procurando = false;
   }

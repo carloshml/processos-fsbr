@@ -44,12 +44,11 @@ export class LerProcessoComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    console.log(' ngOnInit ');
+     
     this.processoId = this.route.snapshot.paramMap.get('id');
     try {
       this.processo = await this.processoService.getProcessoById(this.processoId);
-      console.log('this.processoId', this.processoId);
-      console.log('this.processo', this.processo);
+       
       this.form.get('uf')?.setValue(this.processo.uf);
       this.form.get('municipio')?.setValue(this.processo.municipio);
       this.form.get('npu')?.setValue(this.processo.npu);

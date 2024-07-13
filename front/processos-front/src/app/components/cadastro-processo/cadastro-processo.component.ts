@@ -121,8 +121,7 @@ export class CadastroProcessoComponent {
 
         try {
           const response = await this.processoService.salvarProcessos(this.objSave);
-          console.log('Salvar this.objSave', this.objSave);
-          console.log('Salvar response', response);
+           
           this._snackBar.open('parabéns Processo Salvo');
           this.form.reset();
         } catch (error: any) {
