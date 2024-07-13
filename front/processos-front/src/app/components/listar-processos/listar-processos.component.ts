@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { Pager, PaginacaoService } from '../pagination/paginacao.service';
 import { RouterModule } from '@angular/router';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-listar-processos',
   standalone: true,
-  imports: [MatIconModule, CommonModule, PaginationComponent, RouterModule],
+  imports: [MatIconModule, CommonModule, PaginationComponent, RouterModule, MatProgressBarModule],
   providers: [ProcessoService],
   templateUrl: './listar-processos.component.html',
   styleUrl: './listar-processos.component.scss'
@@ -23,6 +24,7 @@ export class ListarProcessosComponent {
   paginacaoServico = new PaginacaoService();
   totalElementos = 0;
   valorMaximoLinhasGrid = 5;
+  procurando!: boolean;
 
   constructor(private processoService: ProcessoService) {
   }
@@ -33,6 +35,7 @@ export class ListarProcessosComponent {
   }
 
   async setPageofClientes(page: any) {
+    this.procurando = true;
     console.log('page', page);
     if (page < 1 || page > this.pager.totalPages) {
       return;
@@ -41,6 +44,7 @@ export class ListarProcessosComponent {
     const processos = await this.processoService.listarProcessosPaginado((this.pager.currentPage - 1), this.valorMaximoLinhasGrid);
     console.log('processos', processos);
     this.processos = processos;
+    this.procurando = false;
   }
 
 }
