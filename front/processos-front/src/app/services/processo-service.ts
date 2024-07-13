@@ -7,6 +7,7 @@ import { OBJPROCESSO } from "../components/cadastro-processo/cadastro-processo.c
 @Injectable()
 export class ProcessoService {
 
+
     api = `http://localhost:8080/processos`;
 
     constructor(public http: HttpClient) {
@@ -38,6 +39,16 @@ export class ProcessoService {
         return lastValueFrom(
             this.http
                 .get<any>(`${this.api}/listarQtdProcessos`)
+                .pipe(
+                    catchError(e => throwError(() => this.handleErrorRequisicao(e)))
+                )
+        );
+    }
+
+    getProcessoById(id: number) {
+        return lastValueFrom(
+            this.http
+                .get<any>(`${this.api}/${id}`)
                 .pipe(
                     catchError(e => throwError(() => this.handleErrorRequisicao(e)))
                 )

@@ -1,9 +1,9 @@
 <section class="painel">
     <div class="row ">
-        <h2>Listar Processo</h2>
-        <div></div>
-        <h2>
-            <a class="btn-1" href="cadastrar">
+        <h2 class="col">Listar Processo</h2>
+        <div class="col"></div>
+        <h2 class="col">
+            <a class="btn-1" href="cadastrar-processo">
                 <mat-icon>save</mat-icon>
                 cadastrar
             </a>
@@ -12,16 +12,24 @@
 
     <section>
         <div class="row titulo">
-            <div>npu</div>
-            <div>data de cadastro </div>
-            <div>UF do processo</div>
+            <div class="col">npu</div>
+            <div class="col">data de cadastro </div>
+            <div class="col">UF do processo</div>
+            <div class="col-det">
+                ver
+            </div>
         </div>
         <div *ngIf="processos.length > 0">
             @for (processo of processos; track processo) {
             <div class="row elemento">
-                <div>{{processo.npu}}</div>
-                <div>{{processo.dataCadastro | date:'dd/MM/yy HH:mm' }}</div>
-                <div>{{processo.uf}}</div>
+                <div class="col">{{processo.npu}}</div>
+                <div class="col">{{processo.dataCadastro | date:'dd/MM/yy HH:mm' }}</div>
+                <div class="col">{{processo.uf}}</div>
+                <div class="col-det">
+                    <a [routerLink]="['/ler-processo', processo.id]">
+                        <mat-icon>find_in_page</mat-icon>
+                    </a>
+                </div>
             </div>
             }
         </div>

@@ -5,11 +5,12 @@ import { Processo } from '../../entities/processo';
 import { CommonModule } from '@angular/common';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { Pager, PaginacaoService } from '../pagination/paginacao.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-listar-processos',
   standalone: true,
-  imports: [MatIconModule, CommonModule, PaginationComponent],
+  imports: [MatIconModule, CommonModule, PaginationComponent, RouterModule],
   providers: [ProcessoService],
   templateUrl: './listar-processos.component.html',
   styleUrl: './listar-processos.component.scss'
@@ -23,7 +24,7 @@ export class ListarProcessosComponent {
   totalElementos = 0;
   valorMaximoLinhasGrid = 5;
 
-  constructor(public processoService: ProcessoService) {
+  constructor(private processoService: ProcessoService) {
   }
 
   async ngOnInit(): Promise<void> {

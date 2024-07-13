@@ -3,21 +3,23 @@
     flex-wrap: wrap;
 }
 
-.row>* {
+.col {
     width: 30%;
     font-weight: bold;
     padding: 4px;
 }
 
-.titulo{
+.col-det {
+    width: 10;
+    font-weight: bold;
+    padding: 4px;
+}
+
+.titulo {
     background: gray;
     color: white;
 }
 
 .elemento:nth-child(odd) {
     background: rgb(223, 223, 223);
-}
-
-.painel {
-    margin: 0 10%;
 }

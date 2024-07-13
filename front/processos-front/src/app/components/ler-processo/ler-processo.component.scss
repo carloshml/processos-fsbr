@@ -1,0 +1,26 @@
+form {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+.wrapper-mat-form-field,
+mat-form-field {
+    display: flex;
+    width: 49%;
+    margin-left: 1%;
+}
+
+.wrapper-mat-form-field button {
+    width: 100%;
+}
+
+.button-wrapper {
+    width: 100%;
+    justify-content: end;
+    display: flex;
+}
+
+.mat-mdc-unelevated-button {
+    height: 57px;
+}

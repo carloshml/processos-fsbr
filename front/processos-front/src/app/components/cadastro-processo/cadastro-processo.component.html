@@ -28,9 +28,9 @@
       }
     </mat-form-field>
     <div class="wrapper-mat-form-field">
-      <input #csvInput hidden="true" type="file" onclick="this.value=null" (change)="inputChange($event)"
+      <input #input hidden="true" type="file" onclick="this.value=null" (change)="inputChange($event)"
         accept=".pdf" />
-      <button mat-flat-button color="primary" type="button" (click)="csvInput.click()">Escolha o Arquivo PDF </button>
+      <button mat-flat-button color="primary" type="button" (click)="input.click()">Escolha o Arquivo PDF </button>
     </div>
     <div class="button-wrapper">
       <button mat-flat-button >

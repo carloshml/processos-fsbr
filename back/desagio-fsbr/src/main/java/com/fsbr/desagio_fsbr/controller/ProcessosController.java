@@ -36,7 +36,7 @@ public class ProcessosController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Processo> getProcessById(@PathVariable UUID id) {
+    public ResponseEntity<Processo> getProcessoById(@PathVariable UUID id) {
         var processo = processoService.getProcessById(id);
         return ResponseEntity.ok(processo);
     }

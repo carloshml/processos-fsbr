@@ -77,8 +77,8 @@ export class CadastroProcessoComponent {
   procurando?: boolean;
   objSave: OBJPROCESSO = new OBJPROCESSO();
 
-  constructor(public formBuilder: FormBuilder, private _snackBar: MatSnackBar,
-    public localidadesService: LocalidadesService, public processoService: ProcessoService,
+  constructor(formBuilder: FormBuilder, private _snackBar: MatSnackBar,
+    private localidadesService: LocalidadesService, private processoService: ProcessoService,
   ) {
     this.form = formBuilder.group({
       uf: new FormControl('', Validators.required),
