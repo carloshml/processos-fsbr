@@ -39,25 +39,32 @@ export class LerProcessoComponent implements OnInit {
       uf: new FormControl('', Validators.required),
       municipio: new FormControl('', Validators.required),
       npu: new FormControl('', Validators.required),
-      documentoNome: new FormControl('', Validators.required)
+      documentoNome: new FormControl('', Validators.required),
+      dataCadastro: new FormControl('', Validators.required),
+      dataVisualizacao: new FormControl('', Validators.required)
     });
   }
 
   async ngOnInit(): Promise<void> {
-     
+
     this.processoId = this.route.snapshot.paramMap.get('id');
     try {
       this.processo = await this.processoService.getProcessoById(this.processoId);
-       
       this.form.get('uf')?.setValue(this.processo.uf);
       this.form.get('municipio')?.setValue(this.processo.municipio);
       this.form.get('npu')?.setValue(this.processo.npu);
+      this.form.get('dataCadastro')?.setValue(this.fomatarData(this.processo.dataCadastro));
+      this.form.get('dataVisualizacao')?.setValue(this.fomatarData(this.processo.dataVisualizacao));
       this.form.disable();
       this.processoPdfUrl = createURL(this.processo.documento);
       this.pdfView.nativeElement.click();
     } catch (error) {
       this._snackBar.open(JSON.stringify(error));
     }
+  }
+
+  fomatarData(dataCadastro: string) {
+    return new Date(dataCadastro).toLocaleDateString('pt-BR') + new Date(dataCadastro).toLocaleTimeString('pt-BR')
   }
 
   seePDF() {

@@ -1,9 +1,17 @@
 <section class="painel">
-  <h2>Cadastro de Processo</h2>
+  <div class="row ">
+    <h2 class="col">Cadastro de Processo</h2>
+    <div class="col"></div>
+    <h2 class="col ">
+      <a class="btn-1" href="">
+        voltar
+      </a>
+    </h2>
+  </div>
   <form [formGroup]="form" (ngSubmit)="salvar()">
     <mat-form-field class="wrapper-mat-form-field">
       <mat-label>UF</mat-label>
-      <mat-select  formControlName="uf" (selectionChange)="buscarMunicios($event)">
+      <mat-select formControlName="uf" (selectionChange)="buscarMunicios($event)">
         @for (uf of ufs; track uf) {
         <mat-option [value]="uf">{{uf}}</mat-option>
         }
@@ -11,7 +19,7 @@
     </mat-form-field>
     <mat-form-field class="wrapper-mat-form-field">
       <mat-label>Município</mat-label>
-      <mat-select  formControlName="municipio" >
+      <mat-select formControlName="municipio">
         @for (municipio of municipios; track municipio) {
         <mat-option [value]="municipio">{{municipio.descricao}}</mat-option>
         }
@@ -28,12 +36,11 @@
       }
     </mat-form-field>
     <div class="wrapper-mat-form-field">
-      <input #input hidden="true" type="file" onclick="this.value=null" (change)="inputChange($event)"
-        accept=".pdf" />
+      <input #input hidden="true" type="file" onclick="this.value=null" (change)="inputChange($event)" accept=".pdf" />
       <button mat-flat-button color="primary" type="button" (click)="input.click()">Escolha o Arquivo PDF </button>
     </div>
     <div class="button-wrapper">
-      <button mat-flat-button >
+      <button mat-flat-button>
         <mat-icon>save</mat-icon>
         salvar
       </button>

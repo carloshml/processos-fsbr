@@ -1,5 +1,6 @@
 package com.fsbr.desagio_fsbr.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.data.domain.Page;
@@ -29,7 +30,8 @@ public class ProcessoService {
 
     public Processo getProcessById(UUID id) {
         var processosO = processoRepository.findById(id);
-        return processosO.get();
+        processosO.get().setDataVisualizacao(LocalDateTime.now());
+        return processoRepository.save(processosO.get());
     }
 
     public List<Processo> findAllPaginado(PageRequest pageRequest) {

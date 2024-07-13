@@ -2,7 +2,11 @@
     <div class="row ">
         <h2 class="col">Ver Processo</h2>
         <div class="col"></div>
-        <h2 class="col"> </h2>
+        <h2 class="col ">
+            <a class="btn-1" href="">
+                voltar
+            </a>
+        </h2>
     </div>
     <section>
         <form [formGroup]="form" (ngSubmit)="null">
@@ -13,6 +17,14 @@
             <mat-form-field>
                 <mat-label>Município</mat-label>
                 <input matInput type="text" formControlName="municipio">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Cadastro</mat-label>
+                <input matInput type="text" formControlName="dataCadastro">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Visualização</mat-label>
+                <input matInput type="text" formControlName="dataVisualizacao">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>npu</mat-label>

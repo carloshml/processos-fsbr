@@ -23,7 +23,7 @@ public class Processo {
     private LocalDateTime dataCadastro = LocalDateTime.now();
 
     @NotNull
-    private LocalDateTime dataVisualização = LocalDateTime.now();
+    private LocalDateTime dataVisualizacao = LocalDateTime.now();   
 
     @NotNull
     @NotBlank
@@ -77,12 +77,12 @@ public class Processo {
         this.dataCadastro = dataCadastro;
     }
 
-    public LocalDateTime getDataVisualização() {
-        return dataVisualização;
+    public LocalDateTime getDataVisualizacao() {
+        return dataVisualizacao;
     }
 
-    public void setDataVisualização(LocalDateTime dataVisualização) {
-        this.dataVisualização = dataVisualização;
+    public void setDataVisualizacao(LocalDateTime dataVisualizacao) {
+        this.dataVisualizacao = dataVisualizacao;
     }
 
     public String getMunicipio() {
