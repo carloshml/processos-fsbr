@@ -19,6 +19,7 @@
                 ver
             </div>
         </div>
+        <mat-progress-bar *ngIf="procurando" mode="indeterminate"></mat-progress-bar>
         <div *ngIf="processos.length > 0">
             @for (processo of processos; track processo) {
             <div class="row elemento">

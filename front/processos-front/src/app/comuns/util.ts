@@ -14,13 +14,7 @@ export const readFileAsBase64 = async function readFileAsBase64(file: any) {
 
 export const base64ToFile = function base64ToFile(base64String: string, fileName: string) {
     try {
-        const decodedData = atob(base64String);
-        const uint8Array = new Uint8Array(decodedData.length);
-        for (let i = 0; i < decodedData.length; ++i) {
-            uint8Array[i] = decodedData.charCodeAt(i);
-        }
-        const pdfBlob = new Blob([uint8Array], { type: 'application/pdf' });
-        const url = URL.createObjectURL(pdfBlob);
+        const url = createURL(base64String);
         const anchor = document.createElement('a');
         anchor.href = url;
         anchor.download = fileName || 'downloaded-file.pdf';
@@ -30,3 +24,14 @@ export const base64ToFile = function base64ToFile(base64String: string, fileName
         console.error('Error decoding Base64 data:', error);
     }
 };
+
+export const createURL = (base64String: string) => {
+    const decodedData = atob(base64String);
+    const uint8Array = new Uint8Array(decodedData.length);
+    for (let i = 0; i < decodedData.length; ++i) {
+        uint8Array[i] = decodedData.charCodeAt(i);
+    }
+    const pdfBlob = new Blob([uint8Array], { type: 'application/pdf' });
+    return URL.createObjectURL(pdfBlob);
+
+}

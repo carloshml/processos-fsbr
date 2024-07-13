@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, viewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { ProcessoService } from '../../services/processo-service';
@@ -12,8 +12,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { DialogComponent } from '../dialog/dialog.component';
-import { base64ToFile } from '../../comuns/util';
+import { base64ToFile, createURL } from '../../comuns/util';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-ler-processo',
@@ -28,9 +29,12 @@ export class LerProcessoComponent implements OnInit {
   processoId!: any;
   processo!: Processo;
   form: FormGroup;
+  processoPdfUrl = '';
+  urlSafe: any;
+  @ViewChild('pdfView') pdfView!: ElementRef;
 
   constructor(formBuilder: FormBuilder, private route: ActivatedRoute, private _snackBar: MatSnackBar,
-    private processoService: ProcessoService) {
+    private processoService: ProcessoService, public sanitizer: DomSanitizer) {
     this.form = formBuilder.group({
       uf: new FormControl('', Validators.required),
       municipio: new FormControl('', Validators.required),
@@ -50,11 +54,16 @@ export class LerProcessoComponent implements OnInit {
       this.form.get('municipio')?.setValue(this.processo.municipio);
       this.form.get('npu')?.setValue(this.processo.npu);
       this.form.disable();
+      this.processoPdfUrl = createURL(this.processo.documento);
+      this.pdfView.nativeElement.click();
     } catch (error) {
       this._snackBar.open(JSON.stringify(error));
     }
   }
 
+  seePDF() {
+    this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.processoPdfUrl);
+  }
 
   downloadPdf() {
     base64ToFile(this.processo.documento, this.processo.documentoNome);
