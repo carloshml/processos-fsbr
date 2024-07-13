@@ -20,7 +20,7 @@
             </div>
         </div>
         <mat-progress-bar *ngIf="procurando" mode="indeterminate"></mat-progress-bar>
-        <div *ngIf="processos.length > 0">
+        <div *ngIf="processos.length > 0; else semProcessos">
             @for (processo of processos; track processo) {
             <div class="row elemento">
                 <div class="col">{{processo.npu}}</div>
@@ -33,8 +33,15 @@
                 </div>
             </div>
             }
+            <app-pagination [pager]="pager" (paginationEmmiter)="setPageofClientes($event)">
+            </app-pagination>
         </div>
+        <ng-template #semProcessos>
+            <div class="row elemento">
+                Não Há Registros
+            </div>
+        </ng-template>
+
     </section>
-    <app-pagination *ngIf="processos.length > 0" [pager]="pager" (paginationEmmiter)="setPageofClientes($event)">
-    </app-pagination>
+
 </section>
