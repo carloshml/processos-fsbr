@@ -1,16 +1,16 @@
 .disabled {
-    background: #96caf8 !important;
+    background:  var(--light-main-color) !important;
 }
 
 .pagination li {
     display: inline;
     margin: 2px 9px;
-    background: #347ab6;
+    background: var(--main-color);
     padding: 5px 12px;
     border-radius: 4px;
     color: white;
 }
 
 .pagination .active {
-    background: #1364ff;  
+    background: #1364ff;
 }

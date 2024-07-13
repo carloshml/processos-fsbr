@@ -2,7 +2,7 @@
     <div class="row ">
         <h2 class="col">Listar Processo</h2>
         <div class="col"></div>
-        <h2 class="col">
+        <h2 class="col ">
             <a class="btn-1" href="cadastrar-processo">
                 <mat-icon>save</mat-icon>
                 cadastrar
@@ -27,7 +27,7 @@
                 <div class="col">{{processo.dataCadastro | date:'dd/MM/yy HH:mm' }}</div>
                 <div class="col">{{processo.uf}}</div>
                 <div class="col-det">
-                    <a [routerLink]="['/ler-processo', processo.id]">
+                    <a class="btn-1" [routerLink]="['/ler-processo', processo.id]">
                         <mat-icon>find_in_page</mat-icon>
                     </a>
                 </div>
