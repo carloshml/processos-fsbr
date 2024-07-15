@@ -14,7 +14,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DialogComponent {
-  titulo = 'Salvar Compromisso?';
+  titulo = 'Salvar Processo?';
   descricao = '';
   txtBtnFechar = 'Fechar';
   txtBtnOk = 'Salvar';

@@ -21,3 +21,19 @@ em `cd .\back\desagio-fsbr\` se encontra back end  pra aplicação
 # Back 
 - Java 17 
 - Spring 
+
+
+# prints das telas 
+
+## tela  listagem dos registros dos processos  
+<img src="imgs/tela-listar.png" alt="clean-architecture-diagram-1.png" width="700">
+
+## tela de cadastro   do processos 
+<img src="imgs/tela-cadastrar.png" alt="clean-architecture-diagram-1.png" width="700">
+
+## tela  para visualizar o processo
+<img src="imgs/tela-ver.png" alt="clean-architecture-diagram-1.png" width="700">
+
+
+
+
