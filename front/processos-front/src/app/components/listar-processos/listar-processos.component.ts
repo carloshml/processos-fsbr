@@ -19,12 +19,13 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 export class ListarProcessosComponent {
 
   processos: Processo[] = [];
+  procurando!: boolean;
 
+  // atributos para a paginacao
   pager: Pager = new Pager();
   paginacaoServico = new PaginacaoService();
   totalElementos = 0;
   valorMaximoLinhasGrid = 5;
-  procurando!: boolean;
 
   constructor(private processoService: ProcessoService) {
   }
@@ -36,14 +37,16 @@ export class ListarProcessosComponent {
 
   async setPageofClientes(page: any) {
     this.procurando = true;
-     
+
     if (page < 1 || page > this.pager.totalPages) {
       return;
     }
     this.pager = this.paginacaoServico.getPager(this.totalElementos, page, this.valorMaximoLinhasGrid);
-    const processos = await this.processoService.listarProcessosPaginado((this.pager.currentPage - 1), this.valorMaximoLinhasGrid);
-     
-    this.processos = processos;
+    try {
+      this.processos = await this.processoService.listarProcessosPaginado((this.pager.currentPage - 1), this.valorMaximoLinhasGrid);
+    } catch (error) {
+      console.error('error ::: ', error);
+    }
     this.procurando = false;
   }
 
