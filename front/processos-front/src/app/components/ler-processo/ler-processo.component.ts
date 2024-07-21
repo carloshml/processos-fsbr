@@ -64,7 +64,7 @@ export class LerProcessoComponent implements OnInit {
   }
 
   fomatarData(dataCadastro: string) {
-    return new Date(dataCadastro).toLocaleDateString('pt-BR') + new Date(dataCadastro).toLocaleTimeString('pt-BR')
+    return new Date(dataCadastro).toLocaleDateString('pt-BR') + ' ' + new Date(dataCadastro).toLocaleTimeString('pt-BR')
   }
 
   seePDF() {
